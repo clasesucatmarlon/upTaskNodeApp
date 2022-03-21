@@ -14,7 +14,7 @@ require('./models/modelsProyectos');
 
 // SINCRONIZAR BD CON EL MODELO
 db.sync()
-  .then( () => console.log('conectada la bd'))
+  .then( () => console.log('conectado correctamente a la Base de Datos '))
   .catch( error => console.log(error))
 
 // CREAR APLICACION
@@ -37,15 +37,11 @@ app.use( (req, res, next) => {
   next();
 });
 
-const moonLanding = new Date('July 20, 69 00:20:18');
-
-console.log(moonLanding.getFullYear());
-// expected output: 1969
-
 // HABILITAR bodyParser para leer datos del 
 app.use(bodyParser.urlencoded({extended: true}));
 
 // MANEJAR RUTAS
 app.use('/', routes());
+
 
 app. listen(5000);
