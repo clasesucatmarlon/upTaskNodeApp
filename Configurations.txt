@@ -1,0 +1,13 @@
+ARRANCAR MySQL:
+--->>>>  sudo mysql -u marlon -p  / marlon12345
+
+ALTER USER 'marlon'@'localhost' IDENTIFIED WITH mysql_native_password BY 'marlon12345';
+
+FLUSH PRIVILEGES;
+
+
+npm i mysql2 
+npm i sequelize
+npm i express-validator
+npm i slug ---> manejar url
+npm i shortid
