@@ -11,3 +11,5 @@ npm i sequelize
 npm i express-validator
 npm i slug ---> manejar url
 npm i shortid
+npm install -D babel-loader @babel/core @babel/preset-env webpack ---> babel loader
+npm ---> npm install concurrently
