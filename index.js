@@ -14,7 +14,7 @@ require('./models/modelsProyectos');
 
 // SINCRONIZAR BD CON EL MODELO
 db.sync()
-  .then( () => console.log('conectada la bd'))
+  .then( () => console.log('conectado correctamente a la Base de Datos '))
   .catch( error => console.log(error))
 
 // CREAR APLICACION
@@ -42,5 +42,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // MANEJAR RUTAS
 app.use('/', routes());
+
 
 app. listen(5000);

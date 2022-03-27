@@ -32,7 +32,7 @@ exports.nuevoProyecto = async (req, res) => {
     });
   } else {
     // Insertar en BD
-    const proyecto = await Proyectos.create({nombre});
+    await Proyectos.create({nombre});
     res.redirect('/');
   };
 };
@@ -58,10 +58,40 @@ exports.proyectoPorURL = async (req, res, next) => {
 
 exports.formularioEditar = async (req, res) => {
   const proyectos = await Proyectos.findAll();
-  res.render('nuevoProyecto', {
-    nombrePagina: 'Editar proyecto',
-    proyectos
+  const proyectoOne = await Proyectos.findOne({
+    where: {
+      id: req.params.id
+    }
   });
+  res.render('nuevoProyecto', {
+    nombrePagina: 'Editar proyecto - ' + proyectoOne.nombre,
+    proyectos,
+    proyectoOne
+  });
+};
+
+exports.actualizarProyecto = async (req, res) => {
+  const proyectos = await Proyectos.findAll();
+  // VALIDAR EL INPUT
+  const { nombre } = req.body;
+  let errores = [];
+  if (!nombre) {
+    errores.push({'texto': 'Debe agregar un Nombre para el proyecto...'});
+  };
+  if (errores.length > 0) {
+    res.render('nuevoProyecto', {
+      nombrePagina: 'Nuevo proyecto',
+      errores,
+      proyectos
+    });
+  } else {
+    // Insertar en BD
+    await Proyectos.update(
+      { nombre: nombre },
+      { where: {id: req.params.id} }
+    );
+    res.redirect('/');
+  };
 };
 
 // exports --->>> se pueden tener varios y exportarlos
