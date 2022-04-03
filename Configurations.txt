@@ -14,4 +14,5 @@ npm i shortid
 npm install -D babel-loader @babel/core @babel/preset-env webpack ---> babel loader
 npm ---> npm install concurrently
 npm i sweetalert2
+npm install @sweetalert2/themes
 npm i axios
